@@ -1,0 +1,46 @@
+---
+layout: page
+title: Basic Concepts
+permalink: quickstart/basics/
+---
+<h1>Shrinking</h1>
+
+<p>
+QuickTheories supports shrinking.
+<p>
+This means that it doesn't just find a falsifying value and stop. Instead it will try to find other smaller (or "simpler") values that also invalidate the theory.
+<p>
+By default QuickTheories will spend about 100 times more effort looking for smaller values than it did looking for the original falsifying value.
+<p>
+The smallest found value is reported along with a sample of any other falsifying values found along the way.
+<p>
+There is no guarantee that this is the smallest possible falsifying value or that others don't exist. Generally the shrunk values will be easier to understand and work with than the original un-shrunk ones - patterns might be visible in the reported values.
+</p>
+
+<h1>Seeds and repeatable tests</h1>
+
+<p>
+At the end of the report the Seed is reported.
+<p>
+This is the value from which all randomness is derived in QuickTheories.
+<p>
+By default it is set to the System.nanoTime() so the values will be different each time QuickTheories is run, however the seed can also be set explicitly so runs can be reproduced and deterministic.
+<p>
+Whenever a property is falsified the seed used is reported so you can always reproduce the exact same run.
+<p>
+It is therefore always possible to recreate a run, and you can opt for a fully deterministic behaviour by using a single fixed seed.
+<p>
+Two methods are provided to set the seed: directly using the DSL or using the QT_SEED system property.
+</p>
+
+<h1>Assertions</h1>
+
+<p>Our example theory used a simple predicate, but sometimes it would be nice to take advantage of the functionality provided by assertion libraries such as assertj and hamcrest.
+
+This can be done using the checkAssert method.</p>
+
+<h1>Source and assumptions</h1>
+<p>
+We can create theories from a pair of Sources - which produce a pair of values.
+
+In fact we can create theories about any number of values between 1 and 4.</p>

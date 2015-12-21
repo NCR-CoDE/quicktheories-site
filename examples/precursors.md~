@@ -1,0 +1,37 @@
+---
+layout: page
+permalink: /examples/precursors-examples/
+---
+
+<h2>Using asWithPrecursors</h2>
+
+In the example below, the widget does not have a defined toString method, so if the test falsifies it may be difficult to establish the cause. Using the asWithPrecursors method, the input values used in the widget object constructor are also output in the falsification message.
+
+<pre><code>  @Test
+  public void someTheoryOrOther(){
+     qt()
+    .forAll(integers().allPositive()
+          , integers().allPositive())
+    .asWithPrecursor( (width,height) -> new Widget(width,height) )
+    .check( (width,height,widget) -> widget.size() > width * height ); 
+  }
+</code></pre>
+
+When this fails it gives us:
+<pre><code>java.lang.AssertionError: Property falsified after 2 example(s)
+Smallest found falsifying value(s) :-
+{43, 23259, com.example.QuickTheoriesExample$Widget@9e89d68}
+Other found falsifying value(s) :- 
+{536238991, 619642140, com.example.QuickTheoriesExample$Widget@59f95c5d}
+{2891501, 215920967, com.example.QuickTheoriesExample$Widget@5ccd43c2}
+{1479099, 47930205, com.example.QuickTheoriesExample$Widget@4aa8f0b4}
+{297099, 11425635, com.example.QuickTheoriesExample$Widget@7960847b}
+{288582, 10972429, com.example.QuickTheoriesExample$Widget@6a6824be}
+{14457, 5650202, com.example.QuickTheoriesExample$Widget@5c8da962}
+{14456, 393098, com.example.QuickTheoriesExample$Widget@512ddf17}
+{14454, 38038, com.example.QuickTheoriesExample$Widget@2c13da15}
+{14453, 38037, com.example.QuickTheoriesExample$Widget@77556fd}
+{14452, 38036, com.example.QuickTheoriesExample$Widget@368239c8}
+ 
+Seed was 4314310398163
+</code></pre>

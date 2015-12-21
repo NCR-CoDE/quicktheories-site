@@ -65,7 +65,12 @@ figcaption {
 /**
  * Lists
  */
-ul, ol {
+ol {
+    margin-left: $spacing-unit;
+}
+
+ul{
+    list-style: circle;
     margin-left: $spacing-unit;
 }
 
@@ -81,11 +86,22 @@ li {
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: $base-font-weight;
+h1 {
+    font-weight: 530;
+    color: $theme-color;
 }
 
+h2, h3, h4, h5, h6 {
+   font-weight: 480;
+   color: #5cd65c;
+}
 
+/**
+ *Big paragraph
+**/
+p.bp {
+ font-size: 30px;
+}
 
 /**
  * Links
@@ -96,6 +112,7 @@ a {
 
     &:visited {
         color: darken($brand-color, 15%);
+        text-decoration: underline;
     }
 
     &:hover {
@@ -130,17 +147,15 @@ blockquote {
 pre,
 code {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #eef;
+
 }
 
 code {
-    padding: 1px 5px;
+    padding: 1px 1px;
 }
 
 pre {
-    padding: 8px 12px;
+    padding: 8px 8px;
     overflow-x: auto;
 
     > code {
@@ -185,7 +200,6 @@ pre {
         clear: both;
     }
 }
-
 
 
 /**

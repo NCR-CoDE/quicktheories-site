@@ -1,0 +1,21 @@
+---
+layout: page
+title: Examples
+permalink: /examples/
+---
+
+[How to set the seed](/examples/seed-examples)
+
+[How to use multiple sources](/examples/sources-examples)
+
+[How to use checkAssert](/examples/check-assert-examples)
+
+[How to use assumptions](/examples/assumption-examples)
+
+[How to use asWithPrecursors](/examples/precursors-examples)
+
+[How to make a custom shrinker](/examples/shrinker-examples)
+
+[Miscellaneous examples](/examples/extra)
+
+

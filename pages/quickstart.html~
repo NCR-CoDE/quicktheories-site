@@ -1,0 +1,28 @@
+---
+layout: page
+title: Quickstart
+permalink: /quickstart/
+---
+<p>
+QuickTheories is available from <a href = "http://search.maven.org/#search|ga|1|quicktheories">maven central</a>. 
+</p>
+<p>
+You can run QuickTheories from JUnit, TestNG or any other test framework. In our examples, we are using JUnit.
+</p>
+
+The static import org.quicktheories.quicktheories.QuickTheory.qt provides access to the QuickTheories DSL.
+
+
+The static import org.quicktheories.quicktheories.generators.SourceDSL.* provides access to a DSL that allows valid inputs to be defined.
+
+
+<p></p>
+<p>
+<a href = "/quickstart/basics"> Basic Concepts </a>
+</p><p>
+<a href = "/quickstart/advanced"> Further Features </a>
+</p><p>
+<a href = "/quickstart/good_properties"> Writing Good Properties </a>
+</p>
+
+

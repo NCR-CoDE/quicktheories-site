@@ -1,0 +1,12 @@
+
+title: QuickTheories
+url: "http://quicktheories.org"
+description: QuickTheories - property based testing for Java 8
+email: "henry@quicktheories.org"
+twitter_username: 0hjc
+github_username:  NCR-CoDE/QuickTheories
+
+# Build settings
+markdown: kramdown
+
+

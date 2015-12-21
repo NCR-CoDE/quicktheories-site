@@ -1,0 +1,103 @@
+---
+layout: page
+title: Examples
+permalink: /examples/
+---
+
+<h1>Assertions</h1>
+<pre>
+  @Test
+  public void someTheory() {
+    qt().forAll(longs().all())
+        .checkAssert(i -> assertThat(i).isEqualsTo(42));
+  }
+</pre>
+Any block of code that returns void can be passed to checkAssert. Any unchecked exception will be interpreted as falsifying the theory.
+
+
+<h1>Source and assumptions</h1>
+
+We can create theories from a pair of Sources - which produce a pair of values.
+
+In fact we can create theories about any number of values between 1 and 4.
+
+<pre>
+  @Test
+  public void someTheoryOrOther(){
+    qt()
+    .forAll(integers().allPositive()
+          , strings().basicLatinAlphabet().ofLengthBetween(0, 10)
+          , lists().allListsOf(integers().all()).ofSize(42))
+    .check((i,s,l) -> l.contains(i) && s.equals(""));
+  }
+  </pre>
+In the example above we use three Sources, as you can see QuickTheories provides ways of generating the most common Java types.
+<p>
+Sources are made up of two parts:
+
+<ul> <li> A Generator </li>
+<li> A Shrinker </li> </ul>
+<p>
+A generator is just a simple function from a random number generator to a value. A shrinker is something that can intelligently produce simpler instances of that type.
+<p>
+As we can see, the Sources DSL provides a way to put constraints on the values we generate (e.g we will only generate positive integers and the lists in this example will only be of size 42).
+<p>
+Whenever possible you should use the Sources DSL to provide constraints, but sometimes you might need to constrain the domain in ways that cannot be expressed with the DSL.
+
+When this happens use assumptions.
+<pre>
+  @Test
+  public void someTheoryOrOther(){
+    qt()
+    .forAll(integers().allPositive()
+          , strings().basicLatinAlphabet().ofLengthBetween(0, 10)
+          , lists().allListsOf(integers().all()).ofSize(42))
+    .assuming((i,s,l) -> s.contains(i.toString())) // <-- an assumption
+    .check((i,s,l) -> l.contains(i) && s.contains(i.toString()));
+  }
+  </pre>
+Assumptions further constrain the values which form the subject of the theory.
+Although we could always replace the constraints we created in the Sources DSL with assumptions, this would be very inefficient. QuickTheories would have to spend a lot of effort just trying to find valid values before it could try to invalidate a theory.
+<p>
+As difficult to find values probably represent a coding error, QuickTheories will throw an error if less than 10% of the generated values pass the assumptions:
+<pre>
+  @Test
+  public void badUseOfAssumptions() {
+    qt()
+    .forAll(integers().allPositive())
+    .assuming(i -> i < 30000)
+    .check( i -> i < 3000);
+  }
+  </pre>
+Gives
+<pre>
+java.lang.IllegalStateException: Gave up after finding only 107 example(s) matching the assumptions
+    at org.quicktheories.quicktheories.core.ExceptionReporter.valuesExhausted(ExceptionReporter.java:20)
+</pre>
+This assumption could have been replaced by the following:
+<pre>
+  @Test
+  public void goodUseOfSource(){
+    qt().forAll(integers().from(1).upTo(30000))
+    .check( i -> i < 3000);
+  }
+  </pre>
+Which gives the following failure message:
+<pre class="prettyprint lang-java">
+java.lang.AssertionError: Property falsified after 1 example(s) 
+Smallest found falsifying value(s) :-
+3000
+Other found falsifying value(s) :- 
+13723
+13722
+13721
+13720
+13719
+13718
+13717
+13716
+13715
+13714
+
+Seed was 2563360080237
+</pre>

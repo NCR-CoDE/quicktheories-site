@@ -1,0 +1,39 @@
+---
+layout: page
+title: Quickstart
+permalink: /quickstart/
+---
+
+QuickTheories is available from <a href = "http://search.maven.org/#search|ga|1|quicktheories">maven central</a>. 
+
+
+You can run QuickTheories from JUnit, TestNG or any other test framework. In our examples, we are using JUnit.
+
+
+The static import `org.quicktheories.quicktheories.QuickTheory.qt` provides access to the QuickTheories DSL.
+
+The static import `org.quicktheories.quicktheories.generators.SourceDSL.*` provides access to a DSL that allows valid inputs to be defined.
+
+***
+<br/>
+<h3>Configuration Properties</h3>
+
+Three system properties can be set that determine QuickTheories behaviour:
+<ul>
+    <li>QT_SEED - the random seed to use</li>
+    <li>QT_EXAMPLES - the number of examples to try for each theory</li>
+    <li>QT_SHRINKS - the number of shrink attempts to make</li>
+</ul>
+These properties can also be set using the QuickTheories DSL.
+
+***
+<br/>
+<h3>Links To Learn More:</h3>
+<a href = "/quickstart/basics" style="font-size: 20px"> Basic Concepts </a>
+
+<a href = "/quickstart/advanced" style="font-size: 20px"> Further Features </a>
+
+<a href = "/quickstart/good_properties" style="font-size: 20px"> Writing Good Properties </a>
+
+
+Learn more in <a href="/about/#property_testing" style = "font-weight: bold;">Further Features</a>...

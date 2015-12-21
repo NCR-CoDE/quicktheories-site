@@ -1,0 +1,73 @@
+---
+layout: page
+title: Basic Concepts
+permalink: quickstart/basics/
+---
+
+<h3>Using QuickTheories</h3>
+With QuickTheories we create theories using one to four Sources. Sources are made up of two parts:
+
+<ul> <li> A Generator </li>
+<li> A Shrinker </li> </ul>
+
+A generator is just a simple function from a random number generator to a value. A shrinker is something that can intelligently produce simpler instances of that type.
+
+<pre><code> @Test
+  public void someTheoryOrOther(){
+    qt()
+    .forAll(integers().allPositive()
+          , strings().basicLatinAlphabet().ofLengthBetween(0, 10)
+          , lists().allListsOf(integers().all()).ofSize(42))
+    .assuming((i,s,l) -> s.contains(i.toString())) // <-- an assumption
+    .check((i,s,l) -> l.contains(i) && s.contains(i.toString()));
+  }
+</code></pre>
+
+Whenever possible you should use the Sources DSL to provide constraints, but sometimes you might need to constrain the domain in ways that cannot be expressed with the DSL. When this happens use [assumptions](/examples/assumption-examples).
+
+
+QuickTheories comes with several built-in Sources, whose DSL allows us to put constraints on the values generated. It is also possible to create new Generators and Sources - see the [Further Features](/quickstart/advanced) section.
+
+<br/>
+<h3>Shrinking</h3>
+
+QuickTheories supports shrinking.
+
+This means that it doesn't just find a falsifying value and stop. Instead it will try to find other smaller (or "simpler") values that also invalidate the theory.
+
+By default QuickTheories will spend about 100 times more effort looking for smaller values than it did looking for the original falsifying value.
+
+The smallest found value is reported along with a sample of any other falsifying values found along the way.
+
+There is no guarantee that this is the smallest possible falsifying value or that others don't exist. Generally the shrunk values will be easier to understand and work with than the original un-shrunk ones - patterns might be visible in the reported values.
+
+<br/>
+<h3>Seeds and repeatable tests</h3>
+
+
+At the end of the report the Seed is reported.
+
+This is the value from which all randomness is derived in QuickTheories.
+
+By default it is set to the System.nanoTime() so the values will be different each time QuickTheories is run, however the seed can also be set explicitly so runs can be reproduced and deterministic.
+
+Whenever a property is falsified the seed used is reported so you can always reproduce the exact same run.
+
+It is therefore always possible to recreate a run, and you can opt for a fully deterministic behaviour by using a single fixed seed.
+
+Two methods are provided to set the seed: <a href="/examples/seed-examples/#seed_DSL">directly using the DSL</a> or using the QT_SEED system property. 
+
+The same tests can therefore be run with a fixed seed for the purpose of catching regression, or with a changing seed so that falsifying values are constantly being searched for. 
+
+<br/>
+<h3>Assertions</h3>
+
+Our example theory used a simple predicate, but sometimes it would be nice to take advantage of the functionality provided by assertion libraries such as [assertj](http://joel-costigliola.github.io/assertj/) and [hamcrest](https://github.com/hamcrest).
+
+This can be done using the <a href="/examples/check-assert-examples/#check_assert">checkAssert method</a>. 
+
+Any block of code that returns void can be passed to checkAssert. Any unchecked exception will be interpreted as falsifying the theory.
+
+***
+<br/>
+<p class ="bp">Learn more in <a href="/quickstart/advanced/" style = "font-weight: bold;">Further Features</a>...</p>

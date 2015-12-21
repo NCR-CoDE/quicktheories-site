@@ -2,8 +2,8 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
+    border-top: 5px solid #828282;
+    border-bottom: 1px solid #8c8c8c;
     min-height: 56px;
 
     // Positioning context for the mobile navigation icon
@@ -11,8 +11,8 @@
 }
 
 .site-title {
-    font-size: 26px;
-    font-weight: 300;
+    font-size: 34px;
+    font-weight: 600;
     line-height: 56px;
     letter-spacing: -1px;
     margin-bottom: 0;
@@ -20,7 +20,7 @@
 
     &,
     &:visited {
-        color: $grey-color-dark;
+        color: $theme-color;
     }
 }
 
@@ -33,7 +33,7 @@
     }
 
     .page-link {
-        color: $text-color;
+        color: $grey-color-dark;
         line-height: $base-line-height;
 
         // Gaps between nav items, but not on the last one
@@ -98,7 +98,7 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+    border-top: 1px solid #8c8c8c;
     padding: $spacing-unit 0;
 }
 
@@ -127,18 +127,18 @@
 }
 
 .footer-col-1 {
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(1% - (#{$spacing-unit} / 2));
+    width:         calc(1% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2 {
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(54% - (#{$spacing-unit} / 2));
+    width:         calc(54% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
+    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
+    width:         calc(35% - (#{$spacing-unit} / 2));
 }
 
 @include media-query($on-laptop) {

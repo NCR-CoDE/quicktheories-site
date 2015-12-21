@@ -1,0 +1,41 @@
+---
+layout: page
+title: Writing Good Properties
+permalink: quickstart/good_properties/
+---
+
+Properties should not just duplicate the logic of your code under test (this is equally true for the example based testing).
+
+Instead properties should try to specify very simple but general invariants that should hold true. Start with very simple general properties and get more specific as
+you go along.
+
+Some common patterns (which are largely a summary of the material at [fsharpforfunandprofit](http://fsharpforfunandprofit.com/posts/property-based-testing-2/)) that produce good properties include :-
+
+<br/>
+
+<h3>The invariant pattern aka "Some things never change"</h3>
+
+
+Some things are expected to remain constant, e.g a map operation should produce the same number of items that it was given, the total balance across two bank accounts should
+remain constant after a transfer etc.
+	
+<h3>The inverse function pattern aka "There and back again"</h3>
+
+
+If we have two functions that are the inverse of each other then applying the input of one to the other should result in no change.
+
+Common examples of inverse function pairs include
+
+* serialisation / deserialisation
+* compression / decompression
+* encryption / decryption
+* create / delete
+
+<h3>Analogous function pattern aka "Different paths same destination"</h3>
+
+
+If you have two functions that implement the same logic, but differ in some other property (perhaps one is inefficient, insecure or implemented in a third party library) then a property can be defined that checks the outputs of the functions match given the same input. 
+
+<h3>Idempotence aka "The more things change, the more they stay the same"</h3>
+
+Sometimes it's important/logical that performing an operation multiple times has no effect. e.g if you trim the whitespace from a string multiple times, only the first call to trim should have any observable effect. 
