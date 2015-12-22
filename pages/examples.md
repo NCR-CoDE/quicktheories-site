@@ -16,6 +16,8 @@ permalink: /examples/
 
 [How to make a custom shrinker](/examples/shrinker-examples)
 
+[How to modify the falsification output](/examples/falsification-examples)
+
 [Miscellaneous examples](/examples/extra)
 
 

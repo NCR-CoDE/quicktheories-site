@@ -39,7 +39,7 @@ By default QuickTheories will spend about 100 times more effort looking for smal
 
 The smallest found value is reported along with a sample of any other falsifying values found along the way.
 
-There is no guarantee that this is the smallest possible falsifying value or that others don't exist. Generally the shrunk values will be easier to understand and work with than the original un-shrunk ones - patterns might be visible in the reported values.
+There is no guarantee that this is the smallest possible falsifying value or that others don't exist. Generally the shrunk values will be easier to understand and work with than the original un-shrunk ones, as patterns might be visible in the reported values.
 
 <br/>
 <h3>Seeds and repeatable tests</h3>

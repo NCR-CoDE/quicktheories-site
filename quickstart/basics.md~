@@ -12,8 +12,7 @@ With QuickTheories we create theories using one to four Sources. Sources are mad
 
 A generator is just a simple function from a random number generator to a value. A shrinker is something that can intelligently produce simpler instances of that type.
 
-<pre><code>
- @Test
+<pre><code> @Test
   public void someTheoryOrOther(){
     qt()
     .forAll(integers().allPositive()

@@ -35,5 +35,3 @@ These properties can also be set using the QuickTheories DSL.
 
 <a href = "/quickstart/good_properties" style="font-size: 20px"> Writing Good Properties </a>
 
-
-Learn more in <a href="/about/#property_testing" style = "font-weight: bold;">Further Features</a>...

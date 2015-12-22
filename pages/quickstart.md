@@ -7,7 +7,7 @@ permalink: /quickstart/
 QuickTheories is available from <a href = "http://search.maven.org/#search|ga|1|quicktheories">maven central</a>. 
 
 
-You can run QuickTheories from JUnit, TestNG or any other test framework. In our examples, we are using JUnit.
+You can run QuickTheories from JUnit, TestNG or any other test framework. In our examples we are using JUnit.
 
 
 The static import `org.quicktheories.quicktheories.QuickTheory.qt` provides access to the QuickTheories DSL.

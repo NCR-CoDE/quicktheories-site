@@ -3,11 +3,11 @@ layout: page
 permalink: /examples/precursors-examples/
 ---
 
-<h2>Using asWithPrecursors</h2>
+<h2>Using `asWithPrecursors`</h2>
 
-In the example below, the widget does not have a defined toString method, so if the test falsifies it may be difficult to establish the cause. Using the asWithPrecursors method, the input values used in the widget object constructor are also output in the falsification message.
+In the example below, the widget does not have a defined `toString` method, so if the test falsifies it may be difficult to establish the cause. Using the asWithPrecursors method, the input values used in the widget object constructor are also output in the falsification message.
 
-<pre><code>  @Test
+<pre><code> @Test
   public void someTheoryOrOther(){
      qt()
     .forAll(integers().allPositive()

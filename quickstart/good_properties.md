@@ -4,9 +4,9 @@ title: Writing Good Properties
 permalink: quickstart/good_properties/
 ---
 
-Properties should not just duplicate the logic of your code under test (this is equally true for the example based testing).
+Properties should not just duplicate the logic of your code under test (this is equally true for example based testing).
 
-Instead properties should try to specify very simple but general invariants that should hold true. Start with very simple general properties and get more specific as
+Instead, properties should try to specify very simple but general invariants that should hold true. Start with very simple general properties and get more specific as
 you go along.
 
 Some common patterns (which are largely a summary of the material at [fsharpforfunandprofit](http://fsharpforfunandprofit.com/posts/property-based-testing-2/)) that produce good properties include :-

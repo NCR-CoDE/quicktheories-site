@@ -72,7 +72,7 @@ A Source is the combination of a Generator and a Shrinker.
 As Generators are just simple functions, creating new ones is easy:
 <pre><code>(prng,step) -> new Point(prng.nextInt(10000), prng.nextInt(10000))
 </code></pre>
-The second parameter (labelled step) provides a count of how many examples have been created - for most Generators it can be ignored.
+The second parameter (labelled "step") provides a count of how many examples have been created - for most Generators it can be ignored.
 
 Although raw Generators are easy enough to create, it's usually easier to combine the existing ones:
 <pre><code>private Generator&ltCylinder&gt cylinders() {
@@ -83,10 +83,14 @@ Although raw Generators are easy enough to create, it's usually easier to combin
 
 A Generator can be converted into a Source easily, using the static method from the Source class `of`. However, Sources created in this way will never support shrinking. To enable shrinking we need to supply a [custom shrinker](/examples/shrinker-examples) - which is a function from one value of a type to a stream of smaller values of that type.
 
+<br/>
+<h3>Modifying the falsification output</h3>
 
+Values produces by the Sources DSL should provide clear falsification messages.
 
+If you are working with your own Sources, or would like to modify the defaults, you can supply your own function to be used when describing the falsifying values.
 
-
+Custom description functions will be retained when converting to a type with precursors. A description function for the converted type can be optionally passed to the `asWithPrecursor` function. A description function can also be provided for a type converted without precursors. Examples can be found [here](/examples/falsification-examples).
 
 
 
